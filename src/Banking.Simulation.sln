@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.Simulation.Api", "Banking.Simulation.Api\Banking.Simulation.Api.csproj", "{D45676DE-DFF8-409D-AD5D-1284C0511D08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.Simulation.Application", "Banking.Simulation.Application\Banking.Simulation.Application.csproj", "{74164697-DB83-43F4-9762-F8B928886A75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.Simulation.DataAccess", "Banking.Simulation.DataAccess\Banking.Simulation.DataAccess.csproj", "{CE86A707-2B5C-4AEF-8D51-C2EA49FE45C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.Simulation.Core", "Banking.Simulation.Core\Banking.Simulation.Core.csproj", "{2DF053B0-A969-4FA8-B8D4-E3CA6A625B31}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D45676DE-DFF8-409D-AD5D-1284C0511D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D45676DE-DFF8-409D-AD5D-1284C0511D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D45676DE-DFF8-409D-AD5D-1284C0511D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D45676DE-DFF8-409D-AD5D-1284C0511D08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74164697-DB83-43F4-9762-F8B928886A75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74164697-DB83-43F4-9762-F8B928886A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74164697-DB83-43F4-9762-F8B928886A75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74164697-DB83-43F4-9762-F8B928886A75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE86A707-2B5C-4AEF-8D51-C2EA49FE45C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE86A707-2B5C-4AEF-8D51-C2EA49FE45C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE86A707-2B5C-4AEF-8D51-C2EA49FE45C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE86A707-2B5C-4AEF-8D51-C2EA49FE45C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DF053B0-A969-4FA8-B8D4-E3CA6A625B31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DF053B0-A969-4FA8-B8D4-E3CA6A625B31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DF053B0-A969-4FA8-B8D4-E3CA6A625B31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DF053B0-A969-4FA8-B8D4-E3CA6A625B31}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
