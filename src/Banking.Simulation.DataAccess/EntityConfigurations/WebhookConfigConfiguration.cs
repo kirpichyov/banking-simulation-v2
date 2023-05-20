@@ -20,7 +20,7 @@ public class WebhookConfigConfiguration : EntityConfigurationBase<WebhookConfig,
             .IsRequired();
 
         builder.HasOne<Organization>()
-            .WithMany()
+            .WithMany(organization => organization.WebhookConfigs)
             .HasForeignKey(webhookConfig => webhookConfig.OrganizationId)
             .OnDelete(DeleteBehavior.Restrict)
             .IsRequired();

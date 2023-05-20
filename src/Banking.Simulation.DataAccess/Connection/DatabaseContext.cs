@@ -7,6 +7,7 @@ public class DatabaseContext : DbContext
 {
     public DbSet<Organization> Organizations { get; set; }
     public DbSet<WebhookConfig> WebhookConfigs { get; set; }
+    public DbSet<Payment> Payments { get; set; }
 
     public DatabaseContext(DbContextOptions<DatabaseContext> options)
         : base(options)

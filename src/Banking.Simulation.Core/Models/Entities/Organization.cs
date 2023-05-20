@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Banking.Simulation.Core.Models.Entities;
 
@@ -18,4 +19,5 @@ public sealed class Organization : EntityBase<Guid>
     public string Name { get; set; }
     public string Email { get; }
     public string PasswordHash { get; }
+    public ICollection<WebhookConfig> WebhookConfigs { get; }
 }

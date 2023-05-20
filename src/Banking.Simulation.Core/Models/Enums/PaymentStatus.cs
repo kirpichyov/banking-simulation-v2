@@ -3,11 +3,11 @@
 namespace Banking.Simulation.Core.Models.Enums;
 
 [EnumExtensions]
-public enum WebhookType
+public enum PaymentStatus
 {
-    PaymentInitiated,
+    Created,
+    Initiated,
     CreditRequestInitiated,
-    CreditRequestFailed,
-    PaymentCompleted,
-    PaymentFailed,
+    Completed,
+    Failed,
 }

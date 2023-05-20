@@ -35,6 +35,7 @@ public class Startup
 
 	public void ConfigureServices(IServiceCollection services)
 	{
+		services.AddHttpClient();
 		services.AddHttpContextAccessor();
 
 		services.AddFriendlyJwt();
@@ -42,6 +43,8 @@ public class Startup
 
 		services.AddDataAccessServices(_configuration, _environment);
 		services.AddApplicationServices(_configuration);
+		services.AddJobs(_configuration);
+		services.AddBroker();
 
 		services.AddRouting(options => options.LowercaseUrls = true);
 
