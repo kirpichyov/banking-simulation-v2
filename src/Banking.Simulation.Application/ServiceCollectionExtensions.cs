@@ -12,6 +12,7 @@ public static class ServiceCollectionExtensions
         IConfiguration configuration)
     {
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IWebhookConfigsService, WebhookConfigsService>();
 
         return services;
     }

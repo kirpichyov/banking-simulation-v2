@@ -29,6 +29,12 @@ public class ApiErrorResponse
         Errors = nodes.ToArray();
     }
     
+    public ApiErrorResponse(string errorType, string errorMessage)
+    {
+        ErrorType = errorType;
+        Errors = new[] { new ApiErrorResponseNode(null, errorMessage) };
+    }
+    
     public string ErrorType { get; init; }
     public ApiErrorResponseNode[] Errors { get; init; }
 }

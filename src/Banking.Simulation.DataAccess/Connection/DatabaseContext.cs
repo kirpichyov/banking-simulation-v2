@@ -6,6 +6,7 @@ namespace Banking.Simulation.DataAccess.Connection;
 public class DatabaseContext : DbContext
 {
     public DbSet<Organization> Organizations { get; set; }
+    public DbSet<WebhookConfig> WebhookConfigs { get; set; }
 
     public DatabaseContext(DbContextOptions<DatabaseContext> options)
         : base(options)

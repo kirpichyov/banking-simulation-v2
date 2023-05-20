@@ -23,25 +23,25 @@ public sealed class AuthController : ApiControllerBase
     [AllowAnonymous]
     [ProducesResponseType(typeof(OrganizationCreatedResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> RegisterAppUser([FromBody] CreateOrganizationRequest request)
+    public async Task<IActionResult> Register([FromBody] CreateOrganizationRequest request)
     {
         var result = await _authService.CreateOrganization(request);
 
         return result.Match(
             organizationId => StatusCode(StatusCodes.Status201Created, new OrganizationCreatedResponse(organizationId)),
-            validationFailed => BadRequest(new ApiErrorResponse(validationFailed.ErrorType, validationFailed.Errors.ToArray())));
+            validationFailed => BadRequest(new ApiErrorResponse(validationFailed.ErrorType, validationFailed.Errors)));
     }
 
     [HttpPost("obtain-jwt")]
     [AllowAnonymous]
     [ProducesResponseType(typeof(JwtResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> SignInAppUser([FromBody] SignInRequest request)
+    public async Task<IActionResult> ObtainJwt([FromBody] SignInRequest request)
     {
         var result = await _authService.GenerateJwt(request);
 
         return result.Match<IActionResult>(
             jwtResponse => Ok(jwtResponse),
-            validationFailed => BadRequest(new ApiErrorResponse(validationFailed.ErrorType, validationFailed.Errors.ToArray())));
+            validationFailed => BadRequest(new ApiErrorResponse(validationFailed.ErrorType, validationFailed.Errors)));
     }
 }
