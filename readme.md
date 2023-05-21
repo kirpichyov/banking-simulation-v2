@@ -63,6 +63,17 @@ Suggested features to implement in your API:
 }
 ```
 
+`Webhook` model that will be send to your configured url
+```json
+{
+  "Id": "d9ae9da4-6586-42e7-a986-a22feeb23972",
+  "PaymentId": "a3ab3498-502e-442b-abd3-35896b0ee1c6",
+  "PreviousStatus": "Initiated", // Created|Initiated|CreditRequestInitiated|Completed|Failed 
+  "CurrentStatus": "Completed", // Initiated|CreditRequestInitiated|Completed|Failed
+  "Type": "PaymentCompleted" // PaymentInitiated|CreditRequestInitiated|CreditRequestFailed|PaymentCompleted|PaymentFailed
+}
+```
+
 ---
 
 ### Suggested libs to try
