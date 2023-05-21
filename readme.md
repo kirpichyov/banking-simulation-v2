@@ -37,6 +37,34 @@ Suggested features to implement in your API:
 
 ---
 
+### Contract explanation
+
+`POST /api/v1/payments`
+
+```csharp
+{
+  // should only contain cardNumber or bankAccountNumber at once
+  "source": {
+    "cardNumber": "1234-1234-1234-1234", // any string, max 64 chars
+    "bankAccountNumber": "ABWEQWE12301320" // any string, max 64 chars
+  },
+  // should only contain cardNumber or bankAccountNumber at once
+  "destination": {
+    "cardNumber": "4321-4321-4321-4321", // any string, max 64 chars
+    "bankAccountNumber": "XSXADE12301320" // any string, max 64 chars
+  },
+  "creditAllowance": {
+    "isAllowed": true, // if set 'true' then credit line will be requested
+    "maxPercent": 0, // decimal value from '0' (0%) to '1' (100%)
+    "maxPricePerMonth": 0 // decimal value from '0' to decimal max value
+  },
+  "amount": 0, // decimal value greater than '0'
+  "comment": "string" // optional
+}
+```
+
+---
+
 ### Suggested libs to try
 
 - RestEase (communicate with external API): https://github.com/canton7/RestEase
