@@ -14,7 +14,7 @@ namespace Banking.Simulation.Application.Consumers;
 public sealed class SendWebhookCommandConsumer : IConsumer<SendWebhookCommand>
 {
     private const string JsonContentType = "application/json";
-    private const string SecretHeaderName = "Webhook-Secret";
+    private const string SecretHeaderName = "x-webhook-secret";
 
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly ILogger<SendWebhookCommandConsumer> _logger;
@@ -36,6 +36,7 @@ public sealed class SendWebhookCommandConsumer : IConsumer<SendWebhookCommand>
             PaymentId = context.Message.PaymentId,
             PreviousStatus = context.Message.PreviousStatus,
             CurrentStatus = context.Message.CurrentStatus,
+            Type = context.Message.WebhookType,
         };
   
         await Send(
@@ -86,5 +87,6 @@ public sealed class SendWebhookCommandConsumer : IConsumer<SendWebhookCommand>
         public Guid PaymentId { get; init; }
         public PaymentStatus PreviousStatus { get; init; }
         public PaymentStatus CurrentStatus { get; init; }
+        public string Type { get; init; }
     }
 }

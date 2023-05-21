@@ -95,6 +95,7 @@ public sealed class SimulationJob : IJob
                     CurrentStatus = payment.Status,
                     WebhookSecret = webhookConfig.Secret,
                     WebhookUrl = webhookConfig.Url,
+                    WebhookType = webhookConfig.Type.ToString(),
                 });
             }
         }

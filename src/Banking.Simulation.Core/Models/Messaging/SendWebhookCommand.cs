@@ -10,4 +10,5 @@ public sealed record SendWebhookCommand
     public string WebhookSecret { get; init; }
     public PaymentStatus PreviousStatus { get; init; }
     public PaymentStatus CurrentStatus { get; init; }
+    public string WebhookType { get; init; }
 }
