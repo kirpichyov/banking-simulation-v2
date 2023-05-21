@@ -135,7 +135,7 @@ public class Startup
 			}
 		});
 
-		app.UseHttpsRedirection();
+		// app.UseHttpsRedirection();
 		app.UseRouting();
 
 		app.UseCors();

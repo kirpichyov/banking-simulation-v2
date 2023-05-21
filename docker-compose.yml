@@ -10,12 +10,12 @@ services:
     build:
       context: .
     environment:
-      ASPNETCORE_URLS: https://+:443;http://+:80
+      ASPNETCORE_URLS: https://+:443;http://+:8080
       ASPNETCORE_ENVIRONMENT: Development
       ConnectionStrings__DatabaseContext: ${DB_CONNECTION_STRING}
       AuthOptions__AccessTokenLifetime: ${ACCESS_TOKEN_LIFETIME}
     ports:
-      - "5000:80"
+      - "5000:8080"
       - "5001:443"
     depends_on:
       db-migrations:
