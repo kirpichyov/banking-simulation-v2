@@ -18,4 +18,5 @@ public sealed record PaymentResponse
     public string FailReason { get; init; }
     public DateTime CreatedAtUtc { get; init; }
     public DateTime? UpdatedAtUtc { get; init; }
+    public decimal? BankFee { get; init; }
 }

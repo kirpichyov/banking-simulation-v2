@@ -146,6 +146,7 @@ public sealed class PaymentsService : IPaymentsService
             FailReason = payment.FailReason,
             CreatedAtUtc = payment.CreatedAtUtc,
             UpdatedAtUtc = payment.UpdatedAtUtc,
+            BankFee = payment.BankFee,
         };
     }
 }
