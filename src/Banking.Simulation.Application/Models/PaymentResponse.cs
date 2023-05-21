@@ -11,6 +11,8 @@ public sealed record PaymentResponse
     public PaymentMethodDto Source { get; init; }
     public PaymentMethodDto Destination { get; init; }
     public PaymentCreditAllowanceDto CreditAllowance { get; init; }
+    public float? RequestedCreditPercent { get; init; }
+    public decimal? RequestedCreditPricePerMonth { get;init; }
     public string Comment { get; init; }
     public PaymentStatus Status { get; init; }
     public string FailReason { get; init; }

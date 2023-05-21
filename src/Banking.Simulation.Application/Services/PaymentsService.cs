@@ -27,7 +27,7 @@ public sealed class PaymentsService : IPaymentsService
     private readonly IJwtTokenReader _jwtTokenReader;
     private readonly SimulationOptions _simulationJobOptions;
 
-    private static readonly Dictionary<string, PaymentStatus> _testBankNumbers = new()
+    private static readonly Dictionary<string, PaymentStatus> TestBankNumbers = new()
     {
         { "1234567890", PaymentStatus.Failed },
         { "0987654321", PaymentStatus.Completed },
@@ -94,7 +94,7 @@ public sealed class PaymentsService : IPaymentsService
         payment.SetNextSimulation(PaymentStatus.Initiated, nextSimulationStatusAtUtc);
         
         if (!string.IsNullOrEmpty(request.Destination.BankAccountNumber) &&
-            _testBankNumbers.TryGetValue(request.Destination.BankAccountNumber, out var status))
+            TestBankNumbers.TryGetValue(request.Destination.BankAccountNumber, out var status))
         {
             payment.SetNextSimulation(status, nextSimulationStatusAtUtc);
         }
@@ -140,6 +140,8 @@ public sealed class PaymentsService : IPaymentsService
             Destination = payment.GetDestination(),
             Source = payment.GetSource(),
             CreditAllowance = payment.GetCreditAllowance(),
+            RequestedCreditPercent = payment.RequestedCreditPercent,
+            RequestedCreditPricePerMonth = payment.RequestedCreditPricePerMonth,
             Status = payment.Status,
             FailReason = payment.FailReason,
             CreatedAtUtc = payment.CreatedAtUtc,

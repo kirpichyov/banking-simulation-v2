@@ -19,6 +19,9 @@ namespace Banking.Simulation.Application.Jobs;
 
 public sealed class SimulationJob : IJob
 {
+    private const float MinSuccessPercent = 0.1f;
+    private const decimal MinSuccessPricePerMonth = 100m;
+
     private readonly DatabaseContext _databaseContext;
     private readonly ILogger<SimulationJob> _logger;
     private readonly SimulationOptions _simulationOptions;
@@ -136,7 +139,7 @@ public sealed class SimulationJob : IJob
 
     private void HandleInitiated(Payment payment)
     {
-        var isFailed = IsChanceHit(_simulationOptions.AfterInitiateFailChance);
+        var isFailed = !IsChanceHit(_simulationOptions.AfterInitiateSuccessChance);
         var nextDate = GetNextSimulationAtUtc(DateTime.UtcNow);
             
         if (isFailed)
@@ -169,9 +172,24 @@ public sealed class SimulationJob : IJob
 
     private void HandleCreditRequestInitiated(Payment payment)
     {
-        var isFailed = IsChanceHit(_simulationOptions.CreditApprovalFailChance);
+        var creditAllowance = payment.GetCreditAllowance();
+
+        var isBadCreditRequest = creditAllowance.MaxPercent < MinSuccessPercent ||
+                                 creditAllowance.MaxPricePerMonth < MinSuccessPricePerMonth;
+
+        var isFailed = isBadCreditRequest || !IsChanceHit(_simulationOptions.CreditApprovalSuccessChance);
         var nextDate = GetNextSimulationAtUtc(DateTime.UtcNow);
+
+        var requestedCreditPercent = isBadCreditRequest
+            ? creditAllowance.MaxPercent
+            : _faker.Random.Float(MinSuccessPercent, creditAllowance.MaxPercent);
         
+        var requestedCreditPricePerMonth = isBadCreditRequest
+            ? creditAllowance.MaxPricePerMonth
+            : _faker.Random.Decimal(MinSuccessPricePerMonth, creditAllowance.MaxPricePerMonth);
+        
+        payment.SetRequestedCredit(requestedCreditPercent, requestedCreditPricePerMonth);
+
         if (isFailed)
         {
             var failReason = _faker.PickRandom(CreditFailReasons);

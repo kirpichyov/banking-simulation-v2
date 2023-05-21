@@ -33,6 +33,7 @@ public sealed class SendWebhookCommandConsumer : IConsumer<SendWebhookCommand>
 
         var data = new WebhookData()
         {
+            Id = Guid.NewGuid(),
             PaymentId = context.Message.PaymentId,
             PreviousStatus = context.Message.PreviousStatus,
             CurrentStatus = context.Message.CurrentStatus,
@@ -84,6 +85,7 @@ public sealed class SendWebhookCommandConsumer : IConsumer<SendWebhookCommand>
 
     private sealed record WebhookData()
     {
+        public Guid Id { get; init; }
         public Guid PaymentId { get; init; }
         public PaymentStatus PreviousStatus { get; init; }
         public PaymentStatus CurrentStatus { get; init; }

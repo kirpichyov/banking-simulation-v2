@@ -16,7 +16,9 @@ public sealed class PaymentConfiguration : EntityConfigurationBase<Payment, Guid
         builder.Property(entity => entity.SourceJson).IsRequired();
         builder.Property(entity => entity.DestinationJson).IsRequired();
         builder.Property(entity => entity.CreditAllowanceJson).IsRequired();
-        builder.Property(entity => entity.Comment).IsRequired();
+        builder.Property(entity => entity.RequestedCreditPercent).IsRequired(false);
+        builder.Property(entity => entity.RequestedCreditPricePerMonth).IsRequired(false);
+        builder.Property(entity => entity.Comment).IsRequired(false);
         builder.Property(entity => entity.BankFee).IsRequired(false);
         builder.Property(entity => entity.FailReason).IsRequired(false);
         builder.Property(entity => entity.NextSimulationFailReason).IsRequired(false);

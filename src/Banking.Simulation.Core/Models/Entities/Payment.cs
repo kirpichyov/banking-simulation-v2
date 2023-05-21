@@ -37,6 +37,8 @@ public sealed class Payment : EntityBase<Guid>
     public string SourceJson { get; }
     public string DestinationJson { get; }
     public string CreditAllowanceJson { get; }
+    public float? RequestedCreditPercent { get; private set; }
+    public decimal? RequestedCreditPricePerMonth { get; private set; }
     public string Comment { get; init; }
     public decimal? BankFee { get; private set; }
     public PaymentStatus Status { get; private set; }
@@ -69,6 +71,12 @@ public sealed class Payment : EntityBase<Guid>
     {
         Status = status;
         UpdatedAtUtc = DateTime.UtcNow;
+    }
+
+    public void SetRequestedCredit(float requestedCreditPercent, decimal requestedCreditPricePerMonth)
+    {
+        RequestedCreditPercent = requestedCreditPercent;
+        RequestedCreditPricePerMonth = requestedCreditPricePerMonth;
     }
     
     public PaymentMethodDto GetSource()
