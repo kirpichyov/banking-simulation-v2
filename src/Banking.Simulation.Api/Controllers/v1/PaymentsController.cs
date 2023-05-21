@@ -26,14 +26,14 @@ public sealed class PaymentsController : ApiControllerBase
     }
     
     [HttpPost]
-    [ProducesResponseType(typeof(PaymentResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(CreatedPaymentModel), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> CreatePayment([FromBody] InitiatePaymentRequest request)
     {
         var result = await _paymentsService.Create(request);
 
         return result.Match(
-            paymentId => StatusCode(StatusCodes.Status201Created, new { paymentId }),
+            paymentId => StatusCode(StatusCodes.Status201Created, new CreatedPaymentModel(paymentId)),
             validationFailed => BadRequest(new ApiErrorResponse(validationFailed.ErrorType, validationFailed.Errors)));
     }
 }
