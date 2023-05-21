@@ -68,9 +68,9 @@ Suggested features to implement in your API:
 {
   "Id": "d9ae9da4-6586-42e7-a986-a22feeb23972",
   "PaymentId": "a3ab3498-502e-442b-abd3-35896b0ee1c6",
-  "PreviousStatus": "Initiated", // Created|Initiated|CreditRequestInitiated|Completed|Failed 
-  "CurrentStatus": "Completed", // Initiated|CreditRequestInitiated|Completed|Failed
-  "Type": "PaymentCompleted" // PaymentInitiated|CreditRequestInitiated|CreditRequestFailed|PaymentCompleted|PaymentFailed
+  "PreviousStatus": "Created|Initiated|CreditRequestInitiated|Completed|Failed",
+  "CurrentStatus": "Created|Initiated|CreditRequestInitiated|Completed|Failed",
+  "Type": "PaymentInitiated|CreditRequestInitiated|CreditRequestFailed|PaymentCompleted|PaymentFailed"
 }
 ```
 
